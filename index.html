@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Operativo Procesos Logísticos - D1 S.A.S</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #b92d2d 0%, #e88484 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .header .institution {
+            background: linear-gradient(45deg, #e01515, #a55352);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(154, 19, 19, 0.9);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            background: rgba(52, 152, 219, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Image Placeholders */
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #ecf0f1, #bdc3c7);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 2px dashed #bdc3c7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder.small {
+            height: 200px;
+        }
+
+        .image-placeholder.large {
+            height: 400px;
+        }
+
+        /* Image styling when added */
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Hide placeholder text when image is present */
+        .image-placeholder:has(img) {
+            color: transparent;
+            border: none;
+            background: none;
+        }
+
+        /* Alternative for browsers that don't support :has() */
+        .image-placeholder.has-image {
+            color: transparent;
+            border: none;
+            background: none;
+        }
+
+        /* Process Flow */
+        .process-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .process-step {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: scale(1.05);
+        }
+
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 45%;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 55%;
+            margin-left: 0;
+        }
+
+        /* Problem/Solution Sections */
+        .problem {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .solution {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+        }
+
+        .benefits {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+
+        /* Authors */
+        .authors {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .authors h3 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .author-list {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .author {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .author-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+            
+            .process-step::after {
+                display: none;
+            }
+
+            .image-placeholder {
+                height: 200px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .process-step, .stat-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Propuesta de Plan Operativo</h1>
+            <p class="subtitle">Procesos Logísticos en la Empresa D1 S.A.S</p>
+            <div class="institution">Centro de Servicios Financieros SENA - Bogotá</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#empresa">Empresa D1</a></li>
+                <li><a href="#cadena">Cadena de Suministro</a></li>
+                <li><a href="#procesos">Procesos Logísticos</a></li>
+                <li><a href="#problemas">Deficiencias</a></li>
+                <li><a href="#solucion">Propuesta</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Introducción -->
+    <section id="introduccion" class="section">
+        <div class="container">
+            <h2 class="section-title">Introducción</h2>
+            <div class="card">
+                <div class="image-placeholder">
+                    <img src="img/Procesos.jpeg" alt="">
+                </div>
+                <h3>Objetivo del Plan Operativo</h3>
+                <p>En el marco de la estrategia de mejora continua y optimización de los procesos logísticos, se presenta una propuesta de plan operativo que busca mejorar la eficiencia y efectividad de los procesos logísticos de la empresa D1 S.A.S.</p>
+                <p>El objetivo principal es garantizar la entrega de productos y servicios de alta calidad a los clientes, mientras se minimizan los costos y se maximiza la productividad.</p>
+                <p>La propuesta se enfoca en los procesos logísticos clave: gestión de inventarios, almacenamiento, transporte y distribución.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empresa D1 -->
+    <section id="empresa" class="section">
+        <div class="container">
+            <h2 class="section-title">Empresa D1 S.A.S</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="image-placeholder">
+                        <img src="img/logo.jpeg" alt="">
+                    </div>
+                    <h3>Misión y Propósito</h3>
+                    <p>D1 SAS tiene como misión seguir entregando productos de calidad alta a precios bajos a todos los consumidores de Colombia, convirtiéndose en la primera opción de compra permanente.</p>
+                    <p>Fundada en 2009, D1 ha revolucionado la forma en que los colombianos acceden a productos de consumo básico, ofreciendo precios competitivos y una propuesta de valor centrada en el ahorro.</p>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder">
+                        <img src="img/producto.jpeg" alt="">
+                    </div>
+                    <h3>Productos y Servicios</h3>
+                    <p>D1 se encarga de ofrecer productos esenciales como:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Alimentos</li>
+                        <li>Productos de limpieza</li>
+                        <li>Bebidas</li>
+                        <li>Artículos de higiene personal</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">D1 es líder en el mercado de retail en Colombia, generando valor económico directo e indirecto, impulsando prácticas responsables en la cadena de valor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cadena de Suministro -->
+    <section id="cadena" class="section">
+        <div class="container">
+            <h2 class="section-title">Cadena de Suministro D1 S.A.S</h2>
+            <div class="card">
+                <div class="image-placeholder large">
+                    <img src="img/suministros.jpg" alt="">
+                </div>
+                <h3>Actores que Intervienen en la Cadena</h3>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <h4>Proveedores</h4>
+                        <p>Responsables de suministrar insumos y productos terminados para su comercialización.</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>Almacenamiento</h4>
+                        <p>Lugar donde es ubicada la mercancía estratégicamente para su fácil acceso y alistamiento.</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>Distribución</h4>
+                        <p>Etapa en la que se transportan las mercancías desde el centro de distribución hasta el punto de venta.</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>Punto de Venta</h4>
+                        <p>Lugar en el cual los clientes pueden adquirir los productos.</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>Cliente</h4>
+                        <p>Persona o entidad que adquiere un producto o servicio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Centro de Distribución -->
+    <section id="cedis" class="section">
+        <div class="container">
+            <h2 class="section-title">Centro de Distribución Barranquilla</h2>
+            <div class="card">
+                <div class="image-placeholder">
+                    <img src="img/distribucionBarra.jpeg" alt="">
+                </div>
+                <h3>Cobertura y Alcance</h3>
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="stat-number">228</span>
+                        <div class="stat-label">Tiendas Físicas Abastecidas</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3</span>
+                        <div class="stat-label">Departamentos: Atlántico, Bolívar, Magdalena</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">1</span>
+                        <div class="stat-label">Tienda San Andrés Islas (Mayor ganancia nacional)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Procesos Logísticos -->
+    <section id="procesos" class="section">
+        <div class="container">
+            <h2 class="section-title">Procesos Logísticos en Cavas</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="image-placeholder small">
+                            <img src="img/recepcion.jpeg" alt="">
+                        </div>
+                        <h3>Recepción y Almacenamiento</h3>
+                        <p><strong>Horario:</strong> 06:00 - 16:00 horas</p>
+                        <p><strong>Objetivo:</strong> Preservar, proteger y gestionar la mercancía bajo condiciones controladas de temperatura, garantizando su integridad durante todo el ciclo logístico.</p>
+                        <p>Incluye descarga, inspección y ubicación de productos refrigerados y congelados.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="image-placeholder small">
+                            <img src="img/alistamiento.jpeg" alt="">
+                        </div>
+                        <h3>Alistamiento (Picking)</h3>
+                        <p><strong>Turnos:</strong></p>
+                        <ul style="margin-left: 2rem;">
+                            <li>Turno Noche: 22:00 - 06:00 horas</li>
+                            <li>Turno Día: 06:00 - 14:00 horas</li>
+                        </ul>
+                        <p><strong>Volumen:</strong> 160 pedidos diarios (70% del volumen total)</p>
+                        <p>Selección, separación y preparación de productos según solicitudes de tiendas.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="image-placeholder small">
+                            <img src="img/despacho.jpeg" alt="">
+                        </div>
+                        <h3>Despacho y Distribución</h3>
+                        <p><strong>Inicio de cargue:</strong> 02:00 horas (rutas larga distancia)</p>
+                        <p><strong>Rutas locales:</strong> 06:00 horas (Atlántico)</p>
+                        <p>Consolidación, cargue y despacho de pedidos organizados por cliente y ruta de distribución, manteniendo la cadena de frío.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deficiencias Identificadas -->
+    <section id="problemas" class="section problem">
+        <div class="container">
+            <h2 class="section-title">Deficiencias Operativas Identificadas</h2>
+            <div class="card">
+                <h3>Interferencias y Restricciones de Espacio</h3>
+                <p>Durante la revisión de los procesos logísticos en cavas del CEDIS Barranquilla, se identificaron interferencias operativas y restricciones de espacio entre las actividades de Recepción, Alistamiento y Despacho, generando cuellos de botella, pérdidas de eficiencia y costos adicionales.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="image-placeholder small">
+                        <img src="img/recepcion.jpeg" alt="">
+                    </div>
+                    <h3>Recepción de Mercancías</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Demoras en descargues por limitación de muelles compartidos</li>
+                        <li>Extensión en programación de malla de recibo</li>
+                        <li>Sobrecostos por personal adicional</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder small">
+                        <img src="img/alistamiento.jpeg" alt="">
+                    </div>
+                    <h3>Alistamiento (Picking)</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Disminución en productividad por acumulación de pedidos</li>
+                        <li>Falta de espacio en antecámara</li>
+                        <li>Afectación del flujo continuo de trabajo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder small">
+                        <img src="img/despacho.jpeg" alt="">
+                    </div>
+                    <h3>Despacho y Distribución</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Congestión por indisponibilidad de muelles</li>
+                        <li>Espacios insuficientes en antecámara</li>
+                        <li>Retrasos en entregas por tiempos prolongados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuesta de Solución -->
+    <section id="solucion" class="section solution">
+        <div class="container">
+            <h2 class="section-title">Propuesta de Mejora</h2>
+            <div class="card">
+                <h3>Redistribución de Horarios Operativos</h3>
+                <p>Con base en los análisis de carga operativa y disponibilidad de infraestructura, se propone una redistribución de los horarios operativos de los procesos logísticos en el área de cavas, a fin de eliminar los conflictos de espacio y maximizar la eficiencia en el uso de recursos físicos y humanos.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Nuevo Esquema Operativo Propuesto</h3>
+                <p>La reestructuración horaria permite:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Separación temporal de procesos para evitar interferencias</li>
+                    <li>Uso óptimo de muelles y espacios de antecámara</li>
+                    <li>Mayor eficiencia en cada proceso individual</li>
+                    <li>Reducción de conflictos operativos</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios Esperados -->
+    <section id="beneficios" class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Impacto y Beneficios Esperados</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="image-placeholder small">
+                        <img src="img/recepcion.jpeg" alt="">
+                    </div>
+                    <h3>Recepción de Mercancías</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Operación dedicada en turno exclusivo</li>
+                        <li>Uso pleno de muelles disponibles</li>
+                        <li>Mejora en eficiencia sin interferencias</li>
+                        <li>Reducción de sobrecostos por horas extra</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder small">
+                        <img src="img/alistamiento.jpeg" alt="">
+                    </div>
+                    <h3>Alistamiento</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Mejora en productividad de alistadores</li>
+                        <li>Evacuación oportuna de pedidos</li>
+                        <li>Eliminación de acumulación en zonas críticas</li>
+                        <li>Flujo de trabajo optimizado</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder small">
+                        <img src="img/despacho.jpeg" alt="">
+                    </div>
+                    <h3>Despacho y Distribución</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Acceso completo a 6 muelles (02:00-14:00h)</li>
+                        <li>Mayor velocidad en cargues</li>
+                        <li>Disponibilidad total de antecámara</li>
+                        <li>Mejor capacidad de respuesta logística</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusión -->
+    <section id="conclusion" class="section">
+        <div class="container">
+            <h2 class="section-title">Conclusión</h2>
+            <div class="card">
+                <h3>Optimización Integral del Sistema Logístico</h3>
+                <p>La reorganización horaria de los procesos logísticos en el área de cavas del CEDIS Barranquilla – D1 S.A.S. permitirá:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Optimizar la capacidad instalada</strong> - Mejor uso de recursos físicos</li>
+                    <li><strong>Reducir interferencias operativas</strong> - Eliminación de cuellos de botella</li>
+                    <li><strong>Mejorar KPIs logísticos</strong> - Indicadores de desempeño más eficientes</li>
+                    <li><strong>Garantizar el SLA</strong> - Cumplimiento del nivel de servicio comprometido</li>
+                </ul>
+                <p style="margin-top: 2rem; font-weight: 600; color: #2c3e50;">Esta propuesta representa una solución integral que beneficiará tanto a la operación interna como al servicio al cliente final.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autores -->
+    <section class="authors">
+        <div class="container">
+            <h3>Elaborado Por:</h3>
+            <div class="author-list">
+                <div class="author">
+                    <div class="author-name">María Camila Jaimes Sánchez</div>
+                    <div>Coordinación de Procesos Logísticos</div>
+                </div>
+                <div class="author">
+                    <div class="author-name">Dayson Enrique Labarca Maldonado</div>
+                    <div>Coordinación de Procesos Logísticos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation items on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .timeline-item, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Image handling for placeholders
+        function handleImagePlaceholders() {
+            const placeholders = document.querySelectorAll('.image-placeholder');
+            
+            placeholders.forEach(placeholder => {
+                const img = placeholder.querySelector('img');
+                if (img) {
+                    // Add class for styling when image is present
+                    placeholder.classList.add('has-image');
+                    
+                    // Ensure image loads properly
+                    img.onload = function() {
+                        placeholder.classList.add('has-image');
+                    };
+                    
+                    img.onerror = function() {
+                        placeholder.classList.remove('has-image');
+                        placeholder.innerHTML = '[Error: No se pudo cargar la imagen]';
+                    };
+                }
+            });
+        }
+
+        // Run image handling on load and when DOM changes
+        handleImagePlaceholders();
+        
+        // Observer for dynamically added images
+        const imageObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    handleImagePlaceholders();
+                }
+            });
+        });
+
+        // Observe all image placeholders for changes
+        document.querySelectorAll('.image-placeholder').forEach(placeholder => {
+            imageObserver.observe(placeholder, { childList: true, subtree: true });
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = Math.floor(current);
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
+
+        // Animate counters when they come into view
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.stat-number');
+                    const target = parseInt(number.textContent);
+                    if (!isNaN(target)) {
+                        animateCounter(number, target);
+                    }
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.stat-card').forEach(el => {
+            statObserver.observe(el);
+        });
+    </script>
+
+    <style>
+        /* Additional styles for active navigation */
+        .nav a.active {
+            background: rgba(52, 152, 219, 1);
+            color: white;
+        }
+        
+        /* Enhanced hover effects */
+        .process-step:hover {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        /* Timeline enhancements */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #3498db;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item::before {
+                left: 10px;
+                transform: none;
+            }
+        }
+        
+        /* Additional responsive improvements */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .process-flow {
+                flex-direction: column;
+            }
+            
+            .author-list {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>
